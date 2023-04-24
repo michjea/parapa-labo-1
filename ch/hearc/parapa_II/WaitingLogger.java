@@ -130,13 +130,12 @@ public class WaitingLogger {
 
 				char c = 'R';
 				log = p.getLog();
-				int logLength = p.getLog().length();
 
 				if ((int) p.getStartingTime() / 10 == (int) nextLog.getTime() / 10) {
 					c = 'T';
 					log = log.replace('W', c);
 				} else {
-					int nbSpaces = ((int) nextLog.getTime() / 100) - logLength;
+					int nbSpaces = ((int) nextLog.getTime() / 100) - log.length();
 					log += " ".repeat(nbSpaces) + c;
 				}
 
@@ -148,9 +147,8 @@ public class WaitingLogger {
 				finishedList.add(p);
 
 				log = p.getLog();
-				logLength = p.getLog().length();
 
-				int nbLines = ((int) nextLog.getTime() / 100) - logLength;
+				int nbLines = ((int) nextLog.getTime() / 100) - log.length();
 
 				log += "-".repeat(nbLines) + "F";
 				p.setLog(log);
